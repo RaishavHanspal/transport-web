@@ -7,10 +7,12 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-// import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
-// import {  } from "@angular/material/";
+import { CommonModule } from '@angular/common';
+import { ApiService } from './api.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,10 +27,12 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    // MatFormFieldModule,
-    MatInputModule
+    MatFormFieldModule,
+    MatInputModule,
+    CommonModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
