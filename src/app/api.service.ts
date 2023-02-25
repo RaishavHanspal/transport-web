@@ -14,7 +14,7 @@ export class ApiService {
   /** common function to handle all post api calls to transport-api */
   public postRequest(endpoint: string, requestBody: any): Observable<any> {
     const headers = new HttpHeaders();
-    return this.httpClient.post(`${environment.host}${endpoint}`, JSON.stringify(requestBody), { headers });
+    return this.httpClient.post(`${environment.host}${endpoint}`, requestBody, { headers });
   }
 
   /** common function to handle all post api calls to transport-api */
