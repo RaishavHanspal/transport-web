@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title class="card-title">Login</mat-card-title>
+    <mat-card-title class="card-title">Register</mat-card-title>
     <mat-card-content>
         <form [formGroup]="form" (ngSubmit)="submit()" class="form">
             <mat-form-field class="full-width">
@@ -11,7 +11,7 @@
             <mat-error *ngIf="error" class="error">
                 {{ error }}
             </mat-error>
-            <a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">New User</a>
+            <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
             <div class="button">
                 <button type="submit" mat-button>Submit</button>
             </div>

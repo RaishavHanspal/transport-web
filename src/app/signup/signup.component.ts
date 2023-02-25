@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ApiService } from '../api.service';
 import serverEndpoints from '../serverEndpoints';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.less']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.less']
 })
-export class LoginComponent implements OnInit {
+export class SignupComponent implements OnInit {
   constructor(private apiService: ApiService){}
   public form: FormGroup = new FormGroup({
     username: new FormControl(''),
@@ -16,8 +16,6 @@ export class LoginComponent implements OnInit {
   });
   private showErrorTimeOut: any = null;
   @Input() error: string | null = "";
-
-  @Output() submitEM = new EventEmitter();
 
   public ngOnInit(): void {
       
@@ -31,7 +29,7 @@ export class LoginComponent implements OnInit {
       password: this.form.controls['password'].value
     }
     if(requestBody.username && requestBody.password){
-      this.apiService.postRequest(serverEndpoints.login, requestBody).subscribe((response: any) => {
+      this.apiService.postRequest(serverEndpoints.signup, requestBody).subscribe((response: any) => {
         if(response.success){
           alert("success")!
         }
