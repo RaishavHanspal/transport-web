@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import serverEndpoints from '../serverEndpoints';
 
@@ -8,20 +9,14 @@ import serverEndpoints from '../serverEndpoints';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.less']
 })
-export class LoginComponent implements OnInit {
-  constructor(private apiService: ApiService){}
+export class LoginComponent {
+  constructor(private apiService: ApiService, private router:Router){}
   public form: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl(''),
   });
   private showErrorTimeOut: any = null;
   @Input() error: string | null = "";
-
-  @Output() submitEM = new EventEmitter();
-
-  public ngOnInit(): void {
-      
-  }
 
   /** on login submit input, send request to server for is valid user */
   public submit(): void{
@@ -33,7 +28,9 @@ export class LoginComponent implements OnInit {
     if(requestBody.username && requestBody.password){
       this.apiService.postRequest(serverEndpoints.login, requestBody).subscribe((response: any) => {
         if(response.success){
-          alert("success")!
+          localStorage.setItem("username", response.username);
+          localStorage.setItem("isLoggedIn", "true");
+          this.router.navigate(["/dashboard"]);
         }
         else{
           this.showNewError(response.msg);
