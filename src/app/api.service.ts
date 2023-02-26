@@ -22,4 +22,19 @@ export class ApiService {
     const headers = new HttpHeaders();
     return this.httpClient.get(`${environment.host}${endpoint}`, { headers });
   }
+
+  /** login status handle using service to be accessible everywhere */
+  public setLoggedIn(username?: string): void{
+    if(username){
+      localStorage.setItem("username", username);
+    }
+    else{
+      localStorage.removeItem("username");
+    }
+  }
+
+  /** get login status from localhost - @todo - might need to use some token/guest-id */
+  public getLoggedInUser(): string{
+    return localStorage.getItem("username") || "";
+  }
 }

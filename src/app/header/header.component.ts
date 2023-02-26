@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./header.component.less']
 })
 export class HeaderComponent {
-  @Input() isLoggedIn: boolean =  false;
+  @Input() logInUser: string =  "";
   @Output() logOutEvent = new EventEmitter<string>();
 
   logOut(): void{

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,18 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent implements OnInit {
-  constructor(private router: Router){}
-  isLoggedIn: boolean = false;
+  constructor(private router: Router, public apiService: ApiService){}
   title = 'transport-web';
   ngOnInit(): void {
-    this.isLoggedIn = Boolean(localStorage.getItem("isLoggedIn"));
-    this.router.navigate([this.isLoggedIn ? '/dashboard' : '/login']);
+    this.router.navigate([this.apiService.getLoggedInUser() ? '/dashboard' : '/login']);
   }
   
+  /** when user presses on log out from header */
   public logOut(): void{
-    this.isLoggedIn = false;
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("username");
+    this.apiService.setLoggedIn();
     this.router.navigate(['/login']);
   }
 }
