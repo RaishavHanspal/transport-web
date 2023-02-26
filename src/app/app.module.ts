@@ -20,6 +20,11 @@ import { FooterComponent } from './footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from "@angular/material/icon"
 import { MatMenuModule } from "@angular/material/menu";
+import { BookingComponent } from './booking/booking.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { BookingListComponent } from './booking-list/booking-list.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -28,7 +33,10 @@ import { MatMenuModule } from "@angular/material/menu";
     SignupComponent,
     DashboardComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    BookingComponent,
+    UserDetailsComponent,
+    BookingListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +51,9 @@ import { MatMenuModule } from "@angular/material/menu";
     HttpClientModule,
     MatToolbarModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatStepperModule,
+    MatExpansionModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

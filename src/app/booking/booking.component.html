@@ -1,0 +1,50 @@
+<h1 class="title-header">New Booking</h1>
+<mat-stepper [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="bookingDetails">
+        <form [formGroup]="bookingDetails">
+            <ng-template matStepLabel>Booking Details</ng-template>
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput placeholder="Last name, First name" type="text" formControlName="name" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Source</mat-label>
+                <input matInput placeholder="Place of Boarding" type="text" formControlName="source" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Destination</mat-label>
+                <input matInput placeholder="Place of De-boarding" type="text" formControlName="destination" required>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Date of Journey</mat-label>
+                <input matInput placeholder="DD/MM/YYYY" type="text" formControlName="dateOfBoarding" required>
+            </mat-form-field>
+            <div>
+                <button mat-button matStepperNext>Next</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step label="Select Payment Method">
+        <!-- <form> -->
+        <!-- <mat-form-field appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Ex. 1 Main St, New York, NY">
+            </mat-form-field> -->
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+        </div>
+        <!-- </form> -->
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="submit()">Submit</button>
+        </div>
+    </mat-step>
+</mat-stepper>

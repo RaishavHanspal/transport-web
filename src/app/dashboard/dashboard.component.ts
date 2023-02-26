@@ -7,8 +7,4 @@ import { ApiService } from '../api.service';
   styleUrls: ['./dashboard.component.less']
 })
 export class DashboardComponent {
-  // public username: string | null = "";
-  constructor(private apiService: ApiService){
-    // this.username = localStorage.getItem("username");
-  }
 }
