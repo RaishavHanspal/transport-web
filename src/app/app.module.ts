@@ -22,9 +22,10 @@ import { MatIconModule } from "@angular/material/icon"
 import { MatMenuModule } from "@angular/material/menu";
 import { BookingComponent } from './booking/booking.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { BookingListComponent } from './booking-list/booking-list.component';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatMenuModule,
     MatStepperModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatRadioModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

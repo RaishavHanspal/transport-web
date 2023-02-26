@@ -1,4 +1,12 @@
 <h1 class="title-header">My Bookings</h1>
+<mat-card>
+    <mat-card-title class="pad10">
+        {{bookings.length || 'No'}} booking records found
+    </mat-card-title>
+    <div class="button pad10" *ngIf="!bookings.length">
+        <button routerLink="/booking" mat-button>New Booking</button>
+    </div>
+</mat-card>
 <mat-accordion>
     <mat-expansion-panel *ngFor="let booking of bookings; index as bookingIndex" hideToggle>
         <mat-expansion-panel-header>
@@ -8,7 +16,7 @@
             <mat-panel-description>
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <p class="mat-expansion-area">
+        <p class="info-wrapper">
             <span class="info-span" *ngFor="let property of getKeys(bookingDetailTitleMap); index as bookingPropertyIndex">
                 <span class="info-title">
                     {{bookingDetailTitleMap[property]}}

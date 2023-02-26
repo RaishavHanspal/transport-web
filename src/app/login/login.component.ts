@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import serverEndpoints from '../serverEndpoints';
@@ -12,8 +12,8 @@ import serverEndpoints from '../serverEndpoints';
 export class LoginComponent {
   constructor(private apiService: ApiService, private router:Router){}
   public form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
   private showErrorTimeOut: any = null;
   @Input() error: string | null = "";

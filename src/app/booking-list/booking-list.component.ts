@@ -14,7 +14,9 @@ export class BookingListComponent implements OnInit{
     source: "Source",
     destination: "Destination",
     bookedOn: "Booking Date",
-    dateOfBoarding: "Date of Boarding"
+    dateOfBoarding: "Date of Boarding",
+    name: "Name",
+    phone: "Mobile No."
   }
   public ngOnInit(): void {
     this.apiService.postRequest(serverEndpoints.getbookings, {

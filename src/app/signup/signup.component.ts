@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import serverEndpoints from '../serverEndpoints';
 
@@ -9,10 +10,10 @@ import serverEndpoints from '../serverEndpoints';
   styleUrls: ['./signup.component.less']
 })
 export class SignupComponent implements OnInit {
-  constructor(private apiService: ApiService){}
+  constructor(private apiService: ApiService, private router: Router){}
   public form: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
+    username: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
   });
   private showErrorTimeOut: any = null;
   @Input() error: string | null = "";
@@ -31,7 +32,7 @@ export class SignupComponent implements OnInit {
     if(requestBody.username && requestBody.password){
       this.apiService.postRequest(serverEndpoints.signup, requestBody).subscribe((response: any) => {
         if(response.success){
-          alert("success")!
+          this.router.navigate(["/login"]);
         }
         else{
           this.showNewError(response.msg);
